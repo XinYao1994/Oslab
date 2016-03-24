@@ -763,10 +763,10 @@ trap.c: In function 'mips_trap':
 trap.c:271:13: warning: variable 'flag' set but not used [-Wunused-but-set-variable]
 trap.c: At top level:
 trap.c:27:13: warning: 'print_ticks' defined but not used [-Wunused-function]
+In file included from /home/hust/git/Oslab/ucore/ucore/src/kern-ucore/kmodule/mod.h:7:0,
+                 from mod.c:2:
+/home/hust/git/Oslab/ucore/ucore/src/kern-ucore/arch/mips/glue-ucore/atomic.h: In function 'test_and_change_bit':
+/home/hust/git/Oslab/ucore/ucore/src/kern-ucore/arch/mips/glue-ucore/atomic.h:265:16: warning: variable 'c' set but not used [-Wunused-but-set-variable]
+mod.c: In function 'apply_relocate':
+mod.c:14:2: warning: implicit declaration of function 'kprintf' [-Wimplicit-function-declaration]
 arch/mips/bootasm.S:24:21: warning: backslash and newline separated by space [enabled by default]
-/home/hust/git/Oslab/ucore/ucore/obj/kernel/kernel-builtin.o: In function `load_module':
-/home/hust/git/Oslab/ucore/ucore/src/kern-ucore/kmodule/mod.h:(.text+0x36fec): undefined reference to `apply_relocate'
-/home/hust/git/Oslab/ucore/ucore/src/kern-ucore/kmodule/mod.h:(.text+0x3704c): undefined reference to `apply_relocate_add'
-make[2]: *** [/home/hust/git/Oslab/ucore/ucore/obj/kernel/ucore-kernel-initrd] Error 1
-make[1]: *** [all] Error 2
-make: *** [kernel] Error 2
