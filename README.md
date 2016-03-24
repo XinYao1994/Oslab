@@ -25,3 +25,8 @@ Add PATH
 > make ARCH=i386 swapimg
 > ./uCore_run
 
+3. mips kernel
+> make clean
+> make ARCH=mips menuconfig : set you cross-compiler PATH
+> make ARCH=mips sfsimg : it will have been modified in future
+> make ARCH=mips kernel

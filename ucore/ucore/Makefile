@@ -154,7 +154,15 @@ ifneq ($(UCORE_TEST),)
 	@cp -r $(OBJPATH_ROOT)/user-ucore/testbin $(TMPSFS)
 endif
 	@$(Q)$(MAKE) -f $(TOPDIR)/src/user-ucore/Makefile -C $(TOPDIR)/src/user-ucore initial_dir
-	-cp -r $(TOPDIR)/src/user-ucore/_initial/* $(TMPSFS)
+	@if [ $(ARCH) = "mips" ]; \
+	then \
+		echo "mips"; \
+		cp -r $(TOPDIR)/src/user-ucore/_initial/hello.txt $(TMPSFS); \
+	else \
+		echo -n $(ARCH); \
+                echo "not mips"; \
+		cp -r $(TOPDIR)/src/user-ucore/_initial/* $(TMPSFS); \
+	fi
 	@rm -f $@
 	@dd if=/dev/zero of=$@ bs=1M count=$(UCONFIG_SFS_IMAGE_SIZE)
 	@$(TOOLS_MKSFS) $@ $(TMPSFS)
