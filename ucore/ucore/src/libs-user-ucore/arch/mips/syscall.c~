@@ -17,7 +17,7 @@ uintptr_t syscall(int num, ...)
 	}
 	va_end(ap);
 
-	num += SYSCALL_BASE;//modified
+	//num += SYSCALL_BASE;//modified
 	asm volatile (".set noreorder;\n" "move $v0, %1;\n"	/* syscall no. */
 		      "move $a0, %2;\n"
 		      "move $a1, %3;\n"
