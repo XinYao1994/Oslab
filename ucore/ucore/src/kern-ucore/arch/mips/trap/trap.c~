@@ -102,10 +102,6 @@ static void interrupt_handler(struct trapframe *tf)
 			case COM1_IRQ:
 				serial_int_handler(NULL);
 				break;
-                        case KEYBOARD_IRQ:
-                                //kprintf("KEYBOARD\n");
-                                keyboard_int_handler();
-                                break;
 			default:
 				print_trapframe(tf);
 				panic("Unknown interrupt!");

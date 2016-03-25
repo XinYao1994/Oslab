@@ -62,7 +62,6 @@ static void serial_init(void)
 #endif
 
 	pic_enable(COM1_IRQ);
-        pic_enable(KEYBOARD_IRQ);
 }
 
 static void serial_putc_sub(int c)
