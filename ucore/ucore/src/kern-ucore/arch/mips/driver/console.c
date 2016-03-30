@@ -6,6 +6,7 @@
 #include <trap.h>
 #include <memlayout.h>
 #include <sync.h>
+#include <vga.h>
 
 /* stupid I/O delay routine necessitated by historical PC design flaws */
 static void delay(void)
@@ -177,6 +178,9 @@ void serial_intr(void)
 void cons_init(void)
 {
 	serial_init();
+#ifdef MACH_FPGA
+	vga_init();
+#endif
 	//cons.rpos = cons.wpos = 0;
 	if (!serial_exists) {
 		kprintf("serial port does not exist!!\n");
@@ -190,6 +194,9 @@ void cons_putc(int c)
 	local_intr_save(intr_flag);
 	{
 		serial_putc(c);
+#ifdef MACH_FPGA
+		vga_putch(c);
+#endif
 	}
 	local_intr_restore(intr_flag);
 }

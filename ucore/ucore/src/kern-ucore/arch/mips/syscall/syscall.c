@@ -8,6 +8,7 @@
 #include <stat.h>
 #include <dirent.h>
 #include <sysfile.h>
+#include <console.h>
 #include <error.h>
 
 #define current (pls_read(current))
@@ -292,6 +293,15 @@ sys_mkfifo(uint32_t arg[]) {
     return sysfile_mkfifo(name, open_flags);
 }
 
+static int
+sys_redraw_console(uint32_t arg[]) {
+    bool intr_flag;
+    local_intr_save(intr_flag);
+    vga_redraw();
+    local_intr_restore(intr_flag);
+	return 0;
+}
+
 static uint32_t (*syscalls[])(uint32_t arg[]) = {
     [SYS_exit]              sys_exit,
     [SYS_fork]              sys_fork,
@@ -334,6 +344,7 @@ static uint32_t (*syscalls[])(uint32_t arg[]) = {
     [SYS_dup]               sys_dup,
     [SYS_pipe]              sys_pipe,
     [SYS_mkfifo]            sys_mkfifo,
+    [SYS_redraw_console]    sys_redraw_console,
 };
 
 #define NUM_SYSCALLS        ((sizeof(syscalls)) / (sizeof(syscalls[0])))

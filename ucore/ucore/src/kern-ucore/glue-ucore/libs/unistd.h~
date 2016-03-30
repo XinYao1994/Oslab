@@ -76,7 +76,6 @@
 #define SYS_rf212           199
 
 #define SYS_redraw_console		242
-
 /* SYS_fork flags */
 #define CLONE_VM             0x00000100
 #define CLONE_FS             0x00000200

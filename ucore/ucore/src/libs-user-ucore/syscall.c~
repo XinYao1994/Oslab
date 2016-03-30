@@ -280,11 +280,6 @@ int sys_rf212_reset()
 	return syscall(SYS_rf212, 0);
 }
 
-void
-sys_redraw_console() {
-	syscall(SYS_redraw_console);
-}
-
 #else
 #warning ARM use different syscall method
 

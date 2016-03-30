@@ -85,7 +85,4 @@ static inline void outw(uint32_t port, uint32_t data)
 
 #define TIMER0_IRQ       7
 
-#define KEYBOARD_IRQ    6
-#define KEYBOARD       0xaf000000
-
 #endif /* !__LIBS_THUMIPS_H__ */
