@@ -37,7 +37,7 @@ $(KERNEL_ELF): $(LINK_FILE) $(KERNEL_BUILTIN) $(RAMDISK_OBJ) $(MIPS_S_OBJ)
 	@echo Linking uCore
 	sed 's%_FILE_%$(ROOTFS_IMG)%g' tools/initrd_piggy.S.in > $(KTREE_OBJ_ROOT)/initrd_piggy.S
 	$(CROSS_COMPILE)as -EL -g -mips32 $(KTREE_OBJ_ROOT)/initrd_piggy.S -o $(KTREE_OBJ_ROOT)/initrd.img.o
-	$(Q)$(TARGET_LD) $(TARGET_LDFLAGS) -T $(LINK_FILE) $(KERNEL_BUILTIN) $(RAMDISK_OBJ) $(MIPS_S_OBJ) $(KTREE_OBJ_ROOT)/initrd.img.o -o $@
+	$(Q)$(TARGET_LD) $(TARGET_LDFLAGS) -S -nostdlib -n -G 0 -static -T $(LINK_FILE) $(KERNEL_BUILTIN) $(RAMDISK_OBJ) $(MIPS_S_OBJ) $(KTREE_OBJ_ROOT)/initrd.img.o -o $@
 
 $(BOOTSECT): $(OBJPATH_ROOT)
 	$(Q)$(MAKE) -C $(BLTREE) -f $(BLTREE)/Makefile all

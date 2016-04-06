@@ -171,7 +171,7 @@ endif
 		cp -r $(TOPDIR)/src/user-ucore/_initial/* $(TMPSFS); \
 	fi
 	@rm -f $@
-	@dd if=/dev/zero of=$@ bs=1M count=$(UCONFIG_SFS_IMAGE_SIZE)
+	@dd if=/dev/zero of=$@ bs=256K count=$(UCONFIG_SFS_IMAGE_SIZE)
 	@$(TOOLS_MKSFS) $@ $(TMPSFS)
 	@rm -rf $(TMPSFS)
 
