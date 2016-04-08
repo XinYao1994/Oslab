@@ -80,8 +80,24 @@ static inline void outw(uint32_t port, uint32_t data)
 
 /* board specification */
 #define ISA_BASE        0xbfd00000
+//QEMU
 #define COM1            (ISA_BASE+0x3F8)//0x3F8
 #define COM1_IRQ        4
+//Board choose
+#define UART_BASE      0xB0401000
+#define rbr		0*4
+#define ier		1*4
+#define fcr		2*4
+#define lcr		3*4
+#define mcr		4*4
+#define lsr		5*4
+#define msr		6*4
+#define scr		7*4
+
+#define thr		rbr
+#define iir		fcr
+#define dll		rbr
+#define dlm		ier
 
 #define TIMER0_IRQ       7
 

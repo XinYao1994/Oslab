@@ -11,6 +11,8 @@
 /* stupid I/O delay routine necessitated by historical PC design flaws */
 static void delay(void)
 {
+     volatile unsigned int j;
+     for (j = 0; j < (1000); j++) ;	// delay 
 }
 
 /***** Serial I/O code *****/
@@ -60,6 +62,11 @@ static void serial_init(void)
 	outb(COM1 + COM_IER, COM_IER_RDI);
 #elif defined MACH_FPGA
 	//TODO
+        outb(UART_BASE + lcr, 0x80);// LCR[7]  is 1
+        outb(UART_BASE + dll, 27);// DLL msb. 115200 at 50MHz. Formula is Clk/16/baudrate. From axi_uart manual.
+        outb(UART_BASE + lcr, 0x00);// DLL lsb.
+        outb(UART_BASE + lcr, 0x03);// LCR register. 8n1 parity disabled
+        outb(UART_BASE + lcr, 0x00);// IER register. disable interrupts
 #endif
 
 	pic_enable(COM1_IRQ);
@@ -72,8 +79,10 @@ static void serial_putc_sub(int c)
 	outb(COM1 + COM_TX, c);
 #elif defined MACH_FPGA
 	//TODO
-	while ((inw(COM1 + 0x04) & 0x01) == 0) ;
-	outw(COM1 + 0x00, c & 0xFF);
+	while ((inw(UART_BASE + 0x04) & 0x01) == 0) ;
+	//outw(COM1 + 0x00, c & 0xFF);
+	//delay();
+	outb(UART_BASE + thr, c & 0xFF);
 #endif
 }
 
@@ -100,9 +109,11 @@ static int serial_proc_data(void)
 	c = inb(COM1 + COM_RX);
 #elif defined MACH_FPGA
 	//TODO
-	if ((inw(COM1 + 0x04) & 0x02) == 0)
+	if ((inw(UART_BASE + 0x04) & 0x02) == 0)
 		return -1;
-	c = inw(COM1 + 0x00) & 0xFF;
+	//c = inw(COM1 + 0x00) & 0xFF;
+        
+        c = inb(UART_BASE + thr) & 0xFF;
 #endif
 	if (c == 127) {
 		c = '\b';
@@ -112,7 +123,12 @@ static int serial_proc_data(void)
 
 void serial_int_handler(void *opaque)
 {
-	unsigned char id = inb(COM1 + COM_IIR);
+	unsigned char id;
+#ifdef MACH_QEMU
+	id = inb(COM1 + COM_IIR);
+#elif defined MACH_FPGA
+	id = inb(UART_BASE + iir);
+#endif
 	if (id & 0x01)
 		return;
 	//int c = serial_proc_data();
@@ -194,7 +210,9 @@ void cons_putc(int c)
 	local_intr_save(intr_flag);
 	{
 		serial_putc(c);
+#ifdef MACH_FPGA
 		vga_putch(c);
+#endif
 	}
 	local_intr_restore(intr_flag);
 }
