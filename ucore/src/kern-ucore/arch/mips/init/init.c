@@ -31,12 +31,12 @@ void __noreturn kern_init(void)
 	cons_init();		// init the console
 	clock_init();		// init clock interrupt
 
-	kprintf("----test----\n");
-	kprintf("0123456789!@#$%^&*()\n");
-	kprintf("qwertyuiopasdfghjklzxcvbnm\n");
-	kprintf("QWERTYUIOPASDFGHJKLZXCVBNM\n");
-	kprintf("----% test %----\n");
-	kprintf("1+2=%d, 0x%08x\n", 1+2, p);
+	//kprintf("----test----\n");
+	//kprintf("0123456789!@#$%^&*()\n");
+	//kprintf("qwertyuiopasdfghjklzxcvbnm\n");
+	//kprintf("QWERTYUIOPASDFGHJKLZXCVBNM\n");
+	//kprintf("----% test %----\n");
+	//kprintf("1+2=%d, 0x%08x\n", 1+2, p);
 	check_initrd();
 
 	const char *message = "(THU.CST) os is loading ...\n\n";
