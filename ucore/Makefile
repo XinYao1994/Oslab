@@ -185,15 +185,16 @@ endif
 	@$(Q)$(MAKE) -f $(TOPDIR)/src/user-ucore/Makefile -C $(TOPDIR)/src/user-ucore initial_dir
 	@if [ $(ARCH) = "mips" ]; \
 	then \
-		echo "mips"; \
+		echo " mips"; \
 		cp -r $(TOPDIR)/src/user-ucore/_initial/hello.txt $(TMPSFS); \
+		rm -f $@; \
+		dd if=/dev/zero of=$@ count=2400; \
 	else \
-		echo -n $(ARCH); \
-                echo "not mips"; \
+		echo -n $(ARCH)." not mips"; \
 		cp -r $(TOPDIR)/src/user-ucore/_initial/* $(TMPSFS); \
+		rm -f $@; \
+		dd if=/dev/zero of=$@ bs=256K count=$(UCONFIG_SFS_IMAGE_SIZE); \
 	fi
-	@rm -f $@
-	@dd if=/dev/zero of=$@ count=2400 # bs=256K $(UCONFIG_SFS_IMAGE_SIZE)
 	@$(TOOLS_MKSFS) $@ $(TMPSFS)
 	@rm -rf $(TMPSFS)
 
