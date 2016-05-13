@@ -1,0 +1,215 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 3
+-n 3 -fastpaths -xml system.twx system.ncd -o system.twr system.pcf -ucf
+system.ucf
+
+Design file:              system.ncd
+Physical constraint file: system.pcf
+Device,package,speed:     xc7a100t,csg324,C,-3 (PRODUCTION 1.10 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clk_100M
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+ps2_clk     |    0.326(R)|      FAST  |    2.006(R)|      SLOW  |clk_100M_BUFGP    |   0.000|
+ps2_data    |    0.235(R)|      FAST  |    2.085(R)|      SLOW  |clk_100M_BUFGP    |   0.000|
+rst         |    6.263(R)|      SLOW  |   -0.563(R)|      SLOW  |clk_100M_BUFGP    |   0.000|
+rst_counter |    0.897(R)|      FAST  |    0.733(R)|      SLOW  |clk_100M_BUFGP    |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Clock clk_100M to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+clk_50M_out |         9.043(R)|      SLOW  |         3.270(R)|      FAST  |clk_100M_BUFGP    |   0.000|
+clk_cpu_out |         9.270(R)|      SLOW  |         3.405(R)|      FAST  |clk_100M_BUFGP    |   0.000|
+ps2_clk     |         9.936(R)|      SLOW  |         3.745(R)|      FAST  |clk_100M_BUFGP    |   0.000|
+ps2_data    |        10.230(R)|      SLOW  |         3.897(R)|      FAST  |clk_100M_BUFGP    |   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk_100M
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_100M       |    2.698|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+disp_sel<0>    |segdisp_data<0>|   14.347|
+disp_sel<0>    |segdisp_data<1>|   14.445|
+disp_sel<0>    |segdisp_data<2>|   13.830|
+disp_sel<0>    |segdisp_data<3>|   14.373|
+disp_sel<0>    |segdisp_data<4>|   13.996|
+disp_sel<0>    |segdisp_data<5>|   14.364|
+disp_sel<0>    |segdisp_data<6>|   14.146|
+disp_sel<1>    |segdisp_data<0>|   14.196|
+disp_sel<1>    |segdisp_data<1>|   14.294|
+disp_sel<1>    |segdisp_data<2>|   13.679|
+disp_sel<1>    |segdisp_data<3>|   14.222|
+disp_sel<1>    |segdisp_data<4>|   13.845|
+disp_sel<1>    |segdisp_data<5>|   14.213|
+disp_sel<1>    |segdisp_data<6>|   13.995|
+disp_sel<2>    |segdisp_data<0>|   14.126|
+disp_sel<2>    |segdisp_data<1>|   14.443|
+disp_sel<2>    |segdisp_data<2>|   14.240|
+disp_sel<2>    |segdisp_data<3>|   14.592|
+disp_sel<2>    |segdisp_data<4>|   13.996|
+disp_sel<2>    |segdisp_data<5>|   14.583|
+disp_sel<2>    |segdisp_data<6>|   13.914|
+psram_data<0>  |segdisp_data<0>|   10.605|
+psram_data<0>  |segdisp_data<1>|   10.922|
+psram_data<0>  |segdisp_data<2>|   10.719|
+psram_data<0>  |segdisp_data<3>|   11.071|
+psram_data<0>  |segdisp_data<4>|   10.475|
+psram_data<0>  |segdisp_data<5>|   11.062|
+psram_data<0>  |segdisp_data<6>|   10.393|
+psram_data<1>  |segdisp_data<0>|   11.365|
+psram_data<1>  |segdisp_data<1>|   11.512|
+psram_data<1>  |segdisp_data<2>|   10.930|
+psram_data<1>  |segdisp_data<3>|   11.541|
+psram_data<1>  |segdisp_data<4>|   11.079|
+psram_data<1>  |segdisp_data<5>|   11.546|
+psram_data<1>  |segdisp_data<6>|   11.149|
+psram_data<2>  |segdisp_data<0>|   11.090|
+psram_data<2>  |segdisp_data<1>|   11.188|
+psram_data<2>  |segdisp_data<2>|   10.573|
+psram_data<2>  |segdisp_data<3>|   11.116|
+psram_data<2>  |segdisp_data<4>|   10.739|
+psram_data<2>  |segdisp_data<5>|   11.107|
+psram_data<2>  |segdisp_data<6>|   10.889|
+psram_data<3>  |segdisp_data<0>|   11.759|
+psram_data<3>  |segdisp_data<1>|   11.694|
+psram_data<3>  |segdisp_data<2>|   11.048|
+psram_data<3>  |segdisp_data<3>|   11.673|
+psram_data<3>  |segdisp_data<4>|   11.253|
+psram_data<3>  |segdisp_data<5>|   11.676|
+psram_data<3>  |segdisp_data<6>|   11.545|
+psram_data<4>  |segdisp_data<0>|   11.452|
+psram_data<4>  |segdisp_data<1>|   11.769|
+psram_data<4>  |segdisp_data<2>|   11.566|
+psram_data<4>  |segdisp_data<3>|   11.918|
+psram_data<4>  |segdisp_data<4>|   11.322|
+psram_data<4>  |segdisp_data<5>|   11.909|
+psram_data<4>  |segdisp_data<6>|   11.240|
+psram_data<5>  |segdisp_data<0>|   12.087|
+psram_data<5>  |segdisp_data<1>|   12.234|
+psram_data<5>  |segdisp_data<2>|   11.652|
+psram_data<5>  |segdisp_data<3>|   12.263|
+psram_data<5>  |segdisp_data<4>|   11.801|
+psram_data<5>  |segdisp_data<5>|   12.268|
+psram_data<5>  |segdisp_data<6>|   11.871|
+psram_data<6>  |segdisp_data<0>|   11.271|
+psram_data<6>  |segdisp_data<1>|   11.369|
+psram_data<6>  |segdisp_data<2>|   10.754|
+psram_data<6>  |segdisp_data<3>|   11.297|
+psram_data<6>  |segdisp_data<4>|   10.920|
+psram_data<6>  |segdisp_data<5>|   11.288|
+psram_data<6>  |segdisp_data<6>|   11.070|
+psram_data<7>  |segdisp_data<0>|   12.785|
+psram_data<7>  |segdisp_data<1>|   12.720|
+psram_data<7>  |segdisp_data<2>|   12.074|
+psram_data<7>  |segdisp_data<3>|   12.699|
+psram_data<7>  |segdisp_data<4>|   12.279|
+psram_data<7>  |segdisp_data<5>|   12.702|
+psram_data<7>  |segdisp_data<6>|   12.571|
+psram_data<8>  |segdisp_data<0>|   13.563|
+psram_data<8>  |segdisp_data<1>|   13.880|
+psram_data<8>  |segdisp_data<2>|   13.677|
+psram_data<8>  |segdisp_data<3>|   14.029|
+psram_data<8>  |segdisp_data<4>|   13.433|
+psram_data<8>  |segdisp_data<5>|   14.020|
+psram_data<8>  |segdisp_data<6>|   13.351|
+psram_data<9>  |segdisp_data<0>|   13.953|
+psram_data<9>  |segdisp_data<1>|   14.100|
+psram_data<9>  |segdisp_data<2>|   13.518|
+psram_data<9>  |segdisp_data<3>|   14.129|
+psram_data<9>  |segdisp_data<4>|   13.667|
+psram_data<9>  |segdisp_data<5>|   14.134|
+psram_data<9>  |segdisp_data<6>|   13.737|
+psram_data<10> |segdisp_data<0>|   13.459|
+psram_data<10> |segdisp_data<1>|   13.557|
+psram_data<10> |segdisp_data<2>|   12.942|
+psram_data<10> |segdisp_data<3>|   13.485|
+psram_data<10> |segdisp_data<4>|   13.108|
+psram_data<10> |segdisp_data<5>|   13.476|
+psram_data<10> |segdisp_data<6>|   13.258|
+psram_data<11> |segdisp_data<0>|   13.213|
+psram_data<11> |segdisp_data<1>|   13.148|
+psram_data<11> |segdisp_data<2>|   12.502|
+psram_data<11> |segdisp_data<3>|   13.127|
+psram_data<11> |segdisp_data<4>|   12.707|
+psram_data<11> |segdisp_data<5>|   13.130|
+psram_data<11> |segdisp_data<6>|   12.999|
+psram_data<12> |segdisp_data<0>|   10.922|
+psram_data<12> |segdisp_data<1>|   11.239|
+psram_data<12> |segdisp_data<2>|   11.036|
+psram_data<12> |segdisp_data<3>|   11.388|
+psram_data<12> |segdisp_data<4>|   10.792|
+psram_data<12> |segdisp_data<5>|   11.379|
+psram_data<12> |segdisp_data<6>|   10.710|
+psram_data<13> |segdisp_data<0>|   11.290|
+psram_data<13> |segdisp_data<1>|   11.437|
+psram_data<13> |segdisp_data<2>|   10.855|
+psram_data<13> |segdisp_data<3>|   11.466|
+psram_data<13> |segdisp_data<4>|   11.004|
+psram_data<13> |segdisp_data<5>|   11.471|
+psram_data<13> |segdisp_data<6>|   11.074|
+psram_data<14> |segdisp_data<0>|   11.234|
+psram_data<14> |segdisp_data<1>|   11.332|
+psram_data<14> |segdisp_data<2>|   10.717|
+psram_data<14> |segdisp_data<3>|   11.260|
+psram_data<14> |segdisp_data<4>|   10.883|
+psram_data<14> |segdisp_data<5>|   11.251|
+psram_data<14> |segdisp_data<6>|   11.033|
+psram_data<15> |segdisp_data<0>|   10.655|
+psram_data<15> |segdisp_data<1>|   10.590|
+psram_data<15> |segdisp_data<2>|    9.944|
+psram_data<15> |segdisp_data<3>|   10.569|
+psram_data<15> |segdisp_data<4>|   10.149|
+psram_data<15> |segdisp_data<5>|   10.572|
+psram_data<15> |segdisp_data<6>|   10.441|
+---------------+---------------+---------+
+
+
+Analysis completed Wed May 11 10:11:11 2016 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 720 MB
+
+
+

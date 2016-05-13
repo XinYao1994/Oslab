@@ -1,0 +1,9 @@
+ISim log file
+Running: D:\workspace\arm_cpu_for_nexys4_v1_ise14_7\system_top\system_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -view D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/1.wcfg -wdb D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system_tb_isim_beh.wdb 
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# run 200 us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.

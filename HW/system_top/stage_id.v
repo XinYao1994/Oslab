@@ -1,0 +1,451 @@
+/*
+ * $File: stage_id.v
+ * $Date: Thu Dec 19 15:24:18 2013 +0800
+ * $Author: jiakai <jia.kai66@gmail.com>
+ */
+
+`timescale 1ns/1ps
+
+`define EXC_CODE_WIDTH	     5
+`define IF2ID_WIRE_WIDTH (`EXC_CODE_WIDTH+96)
+
+`define BRANCH_OPT_WIDTH	 2
+// used for both stage_mem and mmu
+`define MEM_OPT_NONE	    4'b0000
+`define MEM_OPT_LW		    4'b0001
+`define MEM_OPT_LBS		4'b0010
+`define MEM_OPT_LBU		4'b0011
+`define MEM_OPT_LHU		4'b1101
+`define MEM_OPT_SW		    4'b0100
+`define MEM_OPT_SB		    4'b0101
+// used for stage_mem only
+// operation on CP0 registers
+`define MEM_OPT_WRITE_CP0	    4'b0110
+`define MEM_OPT_READ_CP0	    4'b0111
+`define MEM_OPT_WRITE_TLB_IDX	4'b1000
+// operation on multiplier
+`define MEM_OPT_MFLO		4'b1001
+`define MEM_OPT_MFHI		4'b1010
+`define MEM_OPT_MTLO		4'b1011
+`define MEM_OPT_MTHI		4'b1100
+
+`define ALU_SRC_WIDTH       1
+`define ALU_OPT_WIDTH	     7
+`define MEM_OPT_WIDTH	     4
+`define REGADDR_WIDTH	     5
+`define ID2EX_WIRE_WIDTH (`EXC_CODE_WIDTH+`BRANCH_OPT_WIDTH+`ALU_SRC_WIDTH+`ALU_OPT_WIDTH+`MEM_OPT_WIDTH+`REGADDR_WIDTH+129)
+
+
+`define CP0_REG_ADDR_WIDTH 4
+// definition of internal register numbers
+`define CP0_INDEX		    0
+`define CP0_ENTRY_LO0	    1
+`define CP0_ENTRY_LO1	    2
+`define CP0_BADVADDR	    3
+`define CP0_COUNT		    4
+`define CP0_ENTRY_HI	    5
+`define CP0_COMPARE		6
+`define CP0_STATUS		    7
+`define CP0_CAUSE		    8
+`define CP0_EPC			9
+`define CP0_EBASE		    10	
+`define CP0_UNIMPLEMENTED	11
+
+`define ALU_SRC_REG	1'b1
+`define ALU_SRC_IMM	1'b0
+
+// ALU opt is same as R-type instructions
+`define ALU_OPT_WIDTH	    7
+
+`define ALU_OPT_NONE	    7'h00
+`define ALU_OPT_SLL_IMM	7'h01 // shift opr2 left using imm value
+`define ALU_OPT_SRL_IMM	7'h02 
+`define ALU_OPT_SRA_IMM	7'h03 
+`define ALU_OPT_SLL 	    7'h04
+`define ALU_OPT_SRL 	    7'h06 
+`define ALU_OPT_SRA 	    7'h07  
+`define ALU_OPT_MULT	    7'h18
+`define ALU_OPT_ADDU	    7'h21
+`define ALU_OPT_SUBU	    7'h23
+`define ALU_OPT_AND		7'h24
+`define ALU_OPT_OR		    7'h25
+`define ALU_OPT_XOR		7'h26
+`define ALU_OPT_NOR		7'h27
+`define ALU_OPT_LT		    7'h2A // signed less than
+`define ALU_OPT_LTU		7'h2B // unsigned less than
+`define ALU_OPT_SETU	    7'h40 // extended opt, set upper half of opr1
+`define ALU_OPT_PASS_OPR1	7'h41 // extended opt, result <= first operand
+
+`define BRANCH_NONE		2'b00
+`define BRANCH_ON_ALU_EQZ	2'b01	// branch on alu result = 0
+`define BRANCH_ON_ALU_NEZ	2'b10	// branch on alu result != 0
+`define BRANCH_UNCOND		2'b11	// unconditional jump
+
+`define EXC_CODE_WIDTH	5
+// exc code definitions
+`define EC_INT		    5'h00	// interrupt
+`define EC_TLB_MOD	    5'h01	// modification exception
+`define EC_TLBL		5'h02	// TLBL TLB invalid exception (load or instruction fetch)
+`define EC_TLBS		5'h03	// TLBS TLB invalid exception (store)
+`define EC_ADEL		5'h04	// AdEL Address error exception (load or instruction fetch)
+`define EC_ADES		5'h05	// AdES Address error exception (store)
+`define EC_SYS		    5'h08	// Syscall exception
+`define EC_RI		    5'h0a	// reserved instruction
+`define EC_CP_U		5'h0b	// Coprocessor Unusable exception
+`define EC_NONE		5'h10	// dummy value for no exception
+`define EC_ERET		5'h11	// dummy value to implement ERET
+`define EC_NONE		5'h10	// dummy value for no exception
+`define EC_RI		    5'h0a	// reserved instruction
+
+// check whether operation is read/write mem, not special reg or none
+`define MEM_OPT_IS_READ(opt) ((opt) == `MEM_OPT_LW || (opt) == `MEM_OPT_LBS || (opt) == `MEM_OPT_LBU || (opt) == `MEM_OPT_LHU)
+	
+// instruction decode
+module stage_id(
+	input clk,
+	input rst,
+	input stall,
+	input clear,
+
+	input [`IF2ID_WIRE_WIDTH-1:0] interstage_if2id,
+
+	input in_delay_slot,
+
+	// since reg[0] is always 0, no need for write enable signal;
+	input [`REGADDR_WIDTH-1:0] reg_write_addr,
+	input [31:0] reg_write_data,
+
+	output reg [`REGADDR_WIDTH-1:0] reg1_addr,
+	output reg [31:0] reg1_data,
+	output reg [`REGADDR_WIDTH-1:0] reg2_addr,
+	output reg [31:0] reg2_data,
+
+	output [`ID2EX_WIRE_WIDTH-1:0] interstage_id2ex);
+
+	// ------------------------------------------------------------------
+	wire [`EXC_CODE_WIDTH-1:0] exc_code_if2id;
+    wire [31:0] exc_addr_if2id;
+    wire [31:0] next_pc;
+    wire [31:0] instr;
+    assign { exc_code_if2id,exc_addr_if2id,next_pc,instr } = interstage_if2id;
+    
+    reg [`EXC_CODE_WIDTH-1:0] exc_code_id2ex;
+    reg [31:0] exc_epc_id2ex;
+    reg [31:0] exc_badvaddr_id2ex;
+    reg [`BRANCH_OPT_WIDTH-1:0] branch_opt_id2ex;
+    reg [32:0] branch_dest_id2ex;
+    reg [31:0] alu_sa_imm;
+    reg [`ALU_SRC_WIDTH-1:0] alu_src;
+    reg [`ALU_OPT_WIDTH-1:0] alu_opt;
+    reg [`MEM_OPT_WIDTH-1:0] mem_opt_id2ex;
+    reg [`REGADDR_WIDTH-1:0] wb_reg_addr_id2ex;
+    assign interstage_id2ex = { exc_code_id2ex,exc_epc_id2ex,exc_badvaddr_id2ex,branch_opt_id2ex,branch_dest_id2ex,alu_sa_imm,alu_src,alu_opt,mem_opt_id2ex,wb_reg_addr_id2ex };
+
+
+	wire [31:0] rf_data1, rf_data2;
+
+	wire [5:0] instr_opcode = instr[31:26];
+	wire [5:0] instr_func = instr[5:0];
+	wire [4:0] instr_rs = instr[25:21], instr_rt = instr[20:16],
+				instr_rd = instr[15:11], instr_sa = instr[10:6];
+	wire [15:0] instr_imm = instr[15:0];
+	wire [31:0] instr_imm_signext = {{16{instr_imm[15]}}, instr_imm},
+				instr_imm_unsignext = {16'b0, instr_imm};
+
+	
+	wire [32:0]
+		// pc-relative offset address
+		branch_dest_pc_relative = {1'b0, next_pc + {instr_imm_signext[29:0], 2'b00}},
+		// absolute jump in 256MB area
+		branch_dest_pc_region = {1'b0, next_pc[31:28], instr[25:0], 2'b00};
+
+	register_file uregfile(.clk(clk), .rst(rst),
+		.read1_addr(instr_rs), .read2_addr(instr_rt),
+		.write_addr(reg_write_addr), 
+		.data_in(reg_write_data),
+		.data_out1(rf_data1), .data_out2(rf_data2));
+
+	reg [`CP0_REG_ADDR_WIDTH-1:0] instr_rd_cp0_regnum;
+	always @(*)
+		case (instr_rd)
+			0: instr_rd_cp0_regnum = `CP0_INDEX;
+			2: instr_rd_cp0_regnum = `CP0_ENTRY_LO0;
+			3: instr_rd_cp0_regnum = `CP0_ENTRY_LO1;
+			8: instr_rd_cp0_regnum = `CP0_BADVADDR;
+			9: instr_rd_cp0_regnum = `CP0_COUNT;
+			10: instr_rd_cp0_regnum = `CP0_ENTRY_HI;
+			11: instr_rd_cp0_regnum = `CP0_COMPARE;
+			12: instr_rd_cp0_regnum = `CP0_STATUS;
+			13: instr_rd_cp0_regnum = `CP0_CAUSE;
+			14: instr_rd_cp0_regnum = `CP0_EPC;
+			15: instr_rd_cp0_regnum = `CP0_EBASE;
+			default:
+				instr_rd_cp0_regnum = `CP0_UNIMPLEMENTED;
+		endcase
+
+	task assign_reg1; begin
+		reg1_addr <= instr_rs;
+		reg1_data <= rf_data1;
+	end endtask
+
+	task assign_reg2; begin
+		reg2_addr <= instr_rt;
+		reg2_data <= rf_data2;
+	end endtask
+
+	// process rtype instructions
+	task proc_rtype; begin
+		wb_reg_addr_id2ex <= instr_rd;
+		assign_reg1();
+		assign_reg2();
+		alu_sa_imm <= instr_sa;
+		alu_src <= `ALU_SRC_REG;
+		alu_opt <= instr_func;
+	end endtask
+
+	// set alu_opr2 from reg data
+	task alu_from_reg(input [`ALU_OPT_WIDTH-1:0] opt); begin
+		alu_src <= `ALU_SRC_REG;
+		alu_opt <= opt;
+	end endtask
+
+	// set alu_opr2 from imm
+	task alu_from_imm(input [`ALU_OPT_WIDTH-1:0] opt, input [31:0] imm); begin
+		alu_src <= `ALU_SRC_IMM;
+		alu_opt <= opt;
+		alu_sa_imm <= imm;
+	end endtask
+
+	// setup for memory operations
+	task mem_opt(input [`MEM_OPT_WIDTH-1:0] opt); begin
+		assign_reg1();
+		assign_reg2();
+		alu_from_imm(`ALU_OPT_ADDU, instr_imm_signext);
+		if (`MEM_OPT_IS_READ(opt))
+			wb_reg_addr_id2ex <= instr_rt;
+		mem_opt_id2ex <= opt;
+	end endtask
+
+	// write back, data from alu with imm opr
+	task wb_with_alu_imm(input [`ALU_OPT_WIDTH-1:0] alu_opt, input [31:0] imm); begin
+		wb_reg_addr_id2ex <= instr_rt;
+		assign_reg1();
+		alu_from_imm(alu_opt, imm);
+	end endtask
+
+	// helper for implementing conditional branch
+	task proc_cond_branch(
+			input set_reg,
+			input [`ALU_OPT_WIDTH-1:0] alu_opt,
+			input [`BRANCH_OPT_WIDTH-1:0] cond); begin
+		if (set_reg) begin
+			assign_reg1();
+			assign_reg2();
+		end
+		alu_from_reg(alu_opt);
+		branch_opt_id2ex <= cond;
+		branch_dest_id2ex <= branch_dest_pc_relative;
+	end endtask
+
+	// set exception for invalid instruction
+	task invalid_instruction; begin
+//		$warning("invalid instruction: %h", instr);
+		exc_code_id2ex <= `EC_RI;
+		exc_badvaddr_id2ex <= instr;
+	end endtask
+
+	// process itype instructions
+	task proc_itype; begin
+		case (instr_opcode)
+			6'h01:
+				case (instr_rt)
+					5'b00001: begin  // BGEZ
+						assign_reg1();
+						proc_cond_branch(1'b0, `ALU_OPT_LT, `BRANCH_ON_ALU_EQZ);
+					end
+					5'b00000: begin  // BLTZ 
+						assign_reg1();
+						proc_cond_branch(1'b0, `ALU_OPT_LT, `BRANCH_ON_ALU_NEZ);
+					end
+					default:
+						invalid_instruction();
+				endcase
+			6'h04:  // BEQ
+				proc_cond_branch(1'b1, `ALU_OPT_XOR, `BRANCH_ON_ALU_EQZ);
+			6'h05:  // BNE
+				proc_cond_branch(1'b1, `ALU_OPT_XOR, `BRANCH_ON_ALU_NEZ);
+			6'h06:  
+				if (instr_rt == 5'b00000) begin  // BLEZ
+					reg2_addr <= instr_rs;
+					reg2_data <= rf_data1;
+					proc_cond_branch(1'b0, `ALU_OPT_LT, `BRANCH_ON_ALU_EQZ);
+				end else
+					invalid_instruction();
+			6'h07:
+				if (instr_rt == 5'b00000) begin  // BGTZ
+					reg2_addr <= instr_rs;
+					reg2_data <= rf_data1;
+					proc_cond_branch(1'b0, `ALU_OPT_LT, `BRANCH_ON_ALU_NEZ);
+				end else
+					invalid_instruction();
+			6'h09:	// ADDIU
+				wb_with_alu_imm(`ALU_OPT_ADDU, instr_imm_signext);
+			6'h0a:	// SLTI
+				wb_with_alu_imm(`ALU_OPT_LT, instr_imm_signext);
+			6'h0b:	// SLTIU
+				wb_with_alu_imm(`ALU_OPT_LTU, instr_imm_unsignext);
+			6'h0c:	// ANDI
+				wb_with_alu_imm(`ALU_OPT_AND, instr_imm_unsignext);
+			6'h0d:	// ORI
+				wb_with_alu_imm(`ALU_OPT_OR, instr_imm_unsignext);
+			6'h0e:	// XORI
+				wb_with_alu_imm(`ALU_OPT_XOR, instr_imm_unsignext);
+			6'h0f:	// LUI
+				wb_with_alu_imm(`ALU_OPT_SETU, {instr_imm, 16'b0});
+			6'h20:	// LB
+				mem_opt(`MEM_OPT_LBS);
+			6'h23:	// LW
+				mem_opt(`MEM_OPT_LW);
+			6'h24:	// LBU
+				mem_opt(`MEM_OPT_LBU);
+			6'h25:	// LHU
+				mem_opt(`MEM_OPT_LHU);
+			6'h28:	// SB
+				mem_opt(`MEM_OPT_SB);
+			6'h2b:	// SW
+				mem_opt(`MEM_OPT_SW);
+			default:
+				invalid_instruction();
+		endcase
+	end endtask
+
+	task proc_instr_j; begin
+		branch_opt_id2ex <= `BRANCH_UNCOND;
+		branch_dest_id2ex <= branch_dest_pc_region;
+	end endtask
+
+	task proc_instr_jr; begin
+		branch_opt_id2ex <= `BRANCH_UNCOND;
+		branch_dest_id2ex[32] <= 1'b1; // set to reg2_data
+		reg2_addr <= instr_rs;
+		reg2_data <= rf_data1;
+	end endtask
+
+	task proc_instr_jal; begin
+		proc_instr_j();
+		reg1_data <= next_pc + 32'h4; 
+		alu_opt <= `ALU_OPT_PASS_OPR1;
+		wb_reg_addr_id2ex <= 5'd31;
+	end endtask
+
+	task proc_instr_jalr; begin
+		proc_instr_jal();
+		proc_instr_jr();
+		wb_reg_addr_id2ex <= instr_rd;
+	end endtask
+
+	task proc_instr_syscall; begin
+		exc_code_id2ex <= `EC_SYS;
+	end endtask
+
+	task reset; begin
+		branch_opt_id2ex <= `BRANCH_NONE;
+		wb_reg_addr_id2ex <= 5'h0;
+		alu_opt <= `ALU_OPT_NONE;
+		alu_sa_imm <= 32'h0;
+		reg1_addr <= 5'h0;
+		reg1_data <= 32'h0;
+		reg2_addr <= 5'h0;
+		reg2_data <= 32'h0;
+		mem_opt_id2ex <= `MEM_OPT_NONE;
+		exc_code_id2ex <= `EC_NONE;
+		exc_badvaddr_id2ex <= 32'h0;
+	end endtask
+
+	task proc_cp0;
+		if (instr_func == 6'h18)	// ERET
+			exc_code_id2ex <= `EC_ERET;
+		else if (instr_func == 6'h02)	// TLBWI
+			mem_opt_id2ex <= `MEM_OPT_WRITE_TLB_IDX;
+		else if (instr_rs == 0) begin	// MFC0
+			mem_opt_id2ex <= `MEM_OPT_READ_CP0;
+			reg1_data <= instr_rd_cp0_regnum;
+			alu_opt <= `ALU_OPT_PASS_OPR1;
+			wb_reg_addr_id2ex <= instr_rt;
+		end else if (instr_rs == 5'b00100)	begin // MTC0
+			mem_opt_id2ex <= `MEM_OPT_WRITE_CP0;
+			reg1_data <= instr_rd_cp0_regnum;
+			assign_reg2();
+			alu_opt <= `ALU_OPT_PASS_OPR1;
+		end else
+			invalid_instruction();
+	endtask
+
+	task proc_instr_mfhi; begin
+		mem_opt_id2ex <= `MEM_OPT_MFHI;
+		wb_reg_addr_id2ex <= instr_rd;
+	end endtask
+
+	task proc_instr_mflo; begin
+		mem_opt_id2ex <= `MEM_OPT_MFLO;
+		wb_reg_addr_id2ex <= instr_rd;
+	end endtask
+
+	task proc_instr_mthi; begin
+		assign_reg1();
+		mem_opt_id2ex <= `MEM_OPT_MTHI;
+		alu_opt <= `ALU_OPT_PASS_OPR1;
+	end endtask
+
+	task proc_instr_mtlo; begin
+		assign_reg1();
+		mem_opt_id2ex <= `MEM_OPT_MTLO;
+		alu_opt <= `ALU_OPT_PASS_OPR1;
+	end endtask
+
+	task do_decode; begin
+		case (instr_opcode)
+			6'b000000: case(instr_func)
+				6'h08: proc_instr_jr();		// JR
+				6'h09: proc_instr_jalr();	// JALR
+				6'h0c: proc_instr_syscall();	// SYSCALL
+				6'h10: proc_instr_mfhi();	// MFHI
+				6'h11: proc_instr_mthi();	// MTHI
+				6'h12: proc_instr_mflo();	// MFLO
+				6'h13: proc_instr_mtlo();	// MTLO
+				default: proc_rtype();
+			endcase
+			6'b000010:
+				proc_instr_j();
+			6'b000011:
+				proc_instr_jal();
+			6'b010000:
+				proc_cp0();
+			6'b101111: ;	// CACHE ignored
+			default:
+				proc_itype();
+		endcase
+//		$display("\033[32m < -- id -- > time=%g got instruction: pc=%h instr=%h \033[0m",
+//		$time, next_pc - 4, instr);
+	end endtask
+
+	always @(posedge clk) begin
+		if (rst)
+			reset();
+		else if (!stall) begin
+			reset();
+			if (!clear) begin
+				if (exc_code_if2id != `EC_NONE) begin
+					exc_code_id2ex <= exc_code_if2id;
+					exc_epc_id2ex <= exc_addr_if2id;
+					exc_badvaddr_id2ex <= exc_addr_if2id;
+				end else begin
+					exc_epc_id2ex <= in_delay_slot ? (next_pc - 32'h8) : (next_pc - 32'h4);
+					do_decode();
+				end
+			end
+		end
+	end
+
+endmodule
+

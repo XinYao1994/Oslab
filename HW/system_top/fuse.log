@@ -1,0 +1,68 @@
+Running: D:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system_tb_isim_beh.exe -prj D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system_tb_beh.prj work.system_tb work.glbl 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/ipcore_dir/multiplier.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/register_file.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/cp0.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/alu.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/uart_async.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_mem.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_if.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_id.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_ex.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/multiplier_wrapper.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/mmu.v" into library work
+WARNING:HDLCompiler:248 - "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/mmu.v" Line 205: Block identifier is required on this block
+WARNING:HDLCompiler:248 - "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/mmu.v" Line 200: Block identifier is required on this block
+WARNING:HDLCompiler:248 - "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/mmu.v" Line 212: Block identifier is required on this block
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/forward.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/seven_seg.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/serial_port.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/phy_psram_ctrl.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/cpu.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system_tb.v" into library work
+Analyzing Verilog file "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+WARNING:HDLCompiler:687 - "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" Line 5: Illegal redeclaration of module <glbl>.
+Starting static elaboration
+WARNING:HDLCompiler:1330 - "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/uart_async.v" Line 142: Function log2 has no return value assignment
+Completed static elaboration
+Compiling module seven_seg
+Compiling module forward
+Compiling module LUT3(INIT=8'b11010111)
+Compiling module LUT2(INIT=4'b1000)
+Compiling module LUT4(INIT=16'b0111100010001000)
+Compiling module FD
+Compiling module MUXCY
+Compiling module XORCY
+Compiling module MULT_AND
+Compiling module GND
+Compiling module VCC
+Compiling module multiplier
+Compiling module multiplier_wrapper
+Compiling module stage_if
+Compiling module register_file
+Compiling module stage_id
+Compiling module alu
+Compiling module stage_ex
+Compiling module cp0
+Compiling module stage_mem
+Compiling module mmu
+Compiling module cpu
+Compiling module phy_psram_ctrl
+Compiling module BaudTickGen(ClkFrequency=5000000...
+Compiling module uart_async_transmitter(ClkFreque...
+Compiling module BaudTickGen(ClkFrequency=5000000...
+Compiling module uart_async_receiver(ClkFrequency...
+Compiling module serial_port(CLK_FREQ=50000000)
+Compiling module system
+Compiling module system_tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 19 sub-compilation(s) to finish...
+Compiled 35 Verilog Units
+Built simulation executable D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system_tb_isim_beh.exe
+Fuse Memory Usage: 58788 KB
+Fuse CPU Usage: 2651 ms

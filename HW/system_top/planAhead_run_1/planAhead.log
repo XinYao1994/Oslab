@@ -1,0 +1,186 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Thu Jul 09 10:02:26 2015
+# Process ID: 11288
+# Log file: D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/planAhead_run_1/planAhead.log
+# Journal file: D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from D:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [D:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [D:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+INFO: [Common 17-81] Feature available: PartialReconfiguration
+source D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/pa.fromHdl.tcl
+# create_project -name system_top -dir "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/planAhead_run_2" -part xc7a100tcsg324-3
+create_project: Time (s): elapsed = 00:00:06 . Memory (MB): peak = 499.492 ; gain = 62.418
+# set_param project.pinAheadLayout yes
+# set srcset [get_property srcset [current_run -impl]]
+# set_property target_constrs_file "system.ucf" [current_fileset -constrset]
+Adding file 'D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system.ucf' to fileset 'constrs_1'
+# add_files [list {ipcore_dir/multiplier.ngc}]
+# set hdlfile [add_files [list {register_file.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {ipcore_dir/multiplier.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {cp0.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {alu.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {uart_async.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {stage_mem.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {stage_if.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {stage_id.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {stage_ex.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {multiplier_wrapper.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {mmu.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {forward.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {seven_seg.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {serial_port.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {phy_psram_ctrl.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {cpu.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {system.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set_property top system $srcset
+# add_files [list {system.ucf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/multiplier.ncf}] -fileset [get_property constrset [current_run]]
+# open_rtl_design -part xc7a100tcsg324-3
+Using Verific elaboration
+Parsing VHDL file "D:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/register_file.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/ipcore_dir/multiplier.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/cp0.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/alu.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/uart_async.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_mem.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_if.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_id.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_ex.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/multiplier_wrapper.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/mmu.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/forward.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/seven_seg.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/serial_port.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/phy_psram_ctrl.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/cpu.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system.v" into library work
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design multiplier.ngc ...
+WARNING:NetListWriters:298 - No output is written to multiplier.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file multiplier.edif ...
+ngc2edif: Total memory usage is 87208 kilobytes
+
+Reading core file 'D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/ipcore_dir/multiplier.ngc' for (cell view 'multiplier', library 'work', file 'multiplier.v')
+Parsing EDIF File [./.Xil/PlanAhead-11288-foxtrot-VAIO/ngc2edif/multiplier.edif]
+Finished Parsing EDIF File [./.Xil/PlanAhead-11288-foxtrot-VAIO/ngc2edif/multiplier.edif]
+INFO: [Netlist 29-17] Analyzing 592 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Loading clock regions from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/artix7/artix7/xc7a100t/ClockRegion.xml
+Loading clock buffers from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/artix7/artix7/xc7a100t/ClockBuffers.xml
+Loading clock placement rules from D:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/artix7/ClockPlacerRules.xml
+Loading package pin functions from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/artix7/PinFunctions.xml...
+Loading package from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/artix7/artix7/xc7a100t/csg324/Package.xml
+Loading io standards from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/artix7/IOStandards.xml
+Loading device configuration modes from D:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/artix7/ConfigModes.xml
+Loading list of drcs for the architecture : D:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/artix7/drc.xml
+Parsing UCF File [D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system.ucf]
+Finished Parsing UCF File [D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system.ucf]
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 592 instances were transformed.
+  FD => FDCE: 64 instances
+  MULT_AND => LUT2: 528 instances
+
+Phase 0 | Netlist Checksum: f2996f1b
+open_rtl_design: Time (s): elapsed = 00:00:41 . Memory (MB): peak = 890.988 ; gain = 386.473
+update_compile_order -fileset sim_1
+refresh_design
+Using Verific elaboration
+Parsing VHDL file "D:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/register_file.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/ipcore_dir/multiplier.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/cp0.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/alu.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/uart_async.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_mem.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_if.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_id.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/stage_ex.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/multiplier_wrapper.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/mmu.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/forward.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/seven_seg.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/serial_port.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/phy_psram_ctrl.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/cpu.v" into library work
+Analyzing Verilog file "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system.v" into library work
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design multiplier.ngc ...
+WARNING:NetListWriters:298 - No output is written to multiplier.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file multiplier.edif ...
+ngc2edif: Total memory usage is 87784 kilobytes
+
+Reading core file 'D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/ipcore_dir/multiplier.ngc' for (cell view 'multiplier', library 'work', file 'multiplier.v')
+Parsing EDIF File [./.Xil/PlanAhead-11288-foxtrot-VAIO/ngc2edif/multiplier.edif]
+Finished Parsing EDIF File [./.Xil/PlanAhead-11288-foxtrot-VAIO/ngc2edif/multiplier.edif]
+INFO: [Netlist 29-17] Analyzing 592 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Parsing UCF File [D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system.ucf]
+Finished Parsing UCF File [D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system.ucf]
+refresh_design: Time (s): elapsed = 00:00:22 . Memory (MB): peak = 973.906 ; gain = 32.004
+set_property iostandard LVCMOS33 [get_ports [list clk_100M]]
+startgroup
+set_property package_pin E3 [get_ports clk_100M]
+endgroup
+set_property package_pin "" [get_ports [list  com_TxD]]
+save_constraints
+exit
+ERROR: [PlanAhead 12-106] *** Exception: ui.h.b: Found deleted key in HTclEventBroker. Verify if the classes listed here call cleanup()
+HTclEvent: SIGNAL_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_CORE_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: SIGNAL_BUS_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_PORT_CONFIG_CHANGE   Classes: ui.views.aR 
+ (See D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top\planAhead_pid11288.debug)
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Thu Jul 09 10:08:24 2015...
+INFO: [Common 17-83] Releasing license: PlanAhead

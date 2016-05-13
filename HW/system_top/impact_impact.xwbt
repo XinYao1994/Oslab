@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=C:\workspace\arm_cpu_for_nexys4_v4_ise14_7\system_top\impact.xsl
+OUTFILE=C:\workspace\arm_cpu_for_nexys4_v4_ise14_7\system_top\impact.xsl
+FAMILY=Single
+PART=Single
+WORKINGDIR=C:\workspace\arm_cpu_for_nexys4_v4_ise14_7\system_top
+LICENSE=iMPACT
+USER_INFO=iMPACT

@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system_tb_isim_beh.exe" -prj "D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system_tb_beh.prj" "work.system_tb" "work.glbl" 

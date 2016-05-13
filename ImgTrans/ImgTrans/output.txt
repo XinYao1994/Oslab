@@ -1,0 +1,16 @@
+++setup timer interrupts
+Initrd: 0x8001b450 - 0x800d6c4f, size: 0x000bb800, magic: 0x2f8dbe2a
+(THU.CST) os is loading ...
+
+Special kernel symbols:
+  entry  0x800000BC (phys)
+  etext 0x80019400 (phys)
+  edata 0x800D6C50 (phys)
+  end   0x800DA9D0 (phys)
+Kernel executable memory footprint: 774KB
+memory management: buddy_pmm_manager
+memory map:
+    [80000000, 807FFFF0]
+
+freemem start at: 800EAFE0
+free pages: 00000714

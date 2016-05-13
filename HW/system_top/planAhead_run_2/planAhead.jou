@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Thu Jul 09 10:14:44 2015
+# Process ID: 2080
+# Log file: D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/planAhead_run_2/planAhead.log
+# Journal file: D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/planAhead_run_2/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/pa.fromHdl.tcl
+update_compile_order -fileset sim_1
+set_property iostandard LVCMOS33 [get_ports [list {disp_sel[0]}]]
+startgroup
+set_property package_pin R7 [get_ports {disp_sel[0]}]
+endgroup
+save_constraints

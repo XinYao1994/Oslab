@@ -1,0 +1,226 @@
+
+NET "clk_100M" IOSTANDARD = LVCMOS33;
+NET "clk_100M" LOC = E3;
+
+NET "com_RxD" IOSTANDARD = LVCMOS33;
+NET "com_RxD" LOC = C4;
+NET "com_TxD" IOSTANDARD = LVCMOS33;
+NET "com_TxD" LOC = D4;
+
+
+NET "rst" IOSTANDARD = LVCMOS33;
+NET "rst" LOC = U9;
+NET "rst_counter" IOSTANDARD = LVCMOS33;
+NET "rst_counter" LOC = U8;
+
+NET "disp_sel[0]" IOSTANDARD = LVCMOS33;
+NET "disp_sel[0]" LOC = R7;
+NET "disp_sel[1]" IOSTANDARD = LVCMOS33;
+NET "disp_sel[1]" LOC = R6;
+NET "disp_sel[2]" IOSTANDARD = LVCMOS33;
+NET "disp_sel[2]" LOC = R5;
+
+NET "boot_addr_sel" IOSTANDARD = LVCMOS33;
+NET "boot_addr_sel" LOC = P3;
+
+NET "rom_selector" IOSTANDARD = LVCMOS33;
+NET "rom_selector" LOC = P4;
+
+NET "segdisp_data[0]" IOSTANDARD = LVCMOS33;
+NET "segdisp_data[0]" LOC = L3;
+NET "segdisp_data[1]" IOSTANDARD = LVCMOS33;
+NET "segdisp_data[1]" LOC = N1;
+NET "segdisp_data[2]" IOSTANDARD = LVCMOS33;
+NET "segdisp_data[2]" LOC = L5;
+NET "segdisp_data[3]" IOSTANDARD = LVCMOS33;
+NET "segdisp_data[3]" LOC = L4;
+NET "segdisp_data[4]" IOSTANDARD = LVCMOS33;
+NET "segdisp_data[4]" LOC = K3;
+NET "segdisp_data[5]" IOSTANDARD = LVCMOS33;
+NET "segdisp_data[5]" LOC = M2;
+NET "segdisp_data[6]" IOSTANDARD = LVCMOS33;
+NET "segdisp_data[6]" LOC = L6;
+NET "segdisp_data[7]" IOSTANDARD = LVCMOS33;
+NET "segdisp_data[7]" LOC = M4;
+
+NET "segdisp_sel_n[0]" IOSTANDARD = LVCMOS33;
+NET "segdisp_sel_n[0]" LOC = N6;
+NET "segdisp_sel_n[1]" IOSTANDARD = LVCMOS33;
+NET "segdisp_sel_n[1]" LOC = M6;
+NET "segdisp_sel_n[2]" IOSTANDARD = LVCMOS33;
+NET "segdisp_sel_n[2]" LOC = M3;
+NET "segdisp_sel_n[3]" IOSTANDARD = LVCMOS33;
+NET "segdisp_sel_n[3]" LOC = N5;
+NET "segdisp_sel_n[4]" IOSTANDARD = LVCMOS33;
+NET "segdisp_sel_n[4]" LOC = N2;
+NET "segdisp_sel_n[5]" IOSTANDARD = LVCMOS33;
+NET "segdisp_sel_n[5]" LOC = N4;
+NET "segdisp_sel_n[6]" IOSTANDARD = LVCMOS33;
+NET "segdisp_sel_n[6]" LOC = L1;
+NET "segdisp_sel_n[7]" IOSTANDARD = LVCMOS33;
+NET "segdisp_sel_n[7]" LOC = M1;
+
+NET "led_out[0]" IOSTANDARD = LVCMOS33;
+NET "led_out[0]" LOC = T8;
+NET "led_out[1]" IOSTANDARD = LVCMOS33;
+NET "led_out[1]" LOC = V9;
+NET "led_out[2]" IOSTANDARD = LVCMOS33;
+NET "led_out[2]" LOC = R8;
+NET "led_out[3]" IOSTANDARD = LVCMOS33;
+NET "led_out[3]" LOC = T6;
+NET "led_out[4]" IOSTANDARD = LVCMOS33;
+NET "led_out[4]" LOC = T5;
+NET "led_out[5]" IOSTANDARD = LVCMOS33;
+NET "led_out[5]" LOC = T4;
+NET "led_out[6]" IOSTANDARD = LVCMOS33;
+NET "led_out[6]" LOC = U7;
+NET "led_out[7]" IOSTANDARD = LVCMOS33;
+NET "led_out[7]" LOC = U6;
+NET "led_out[8]" IOSTANDARD = LVCMOS33;
+NET "led_out[8]" LOC = V4;
+NET "led_out[9]" IOSTANDARD = LVCMOS33;
+NET "led_out[9]" LOC = U3;
+NET "led_out[10]" IOSTANDARD = LVCMOS33;
+NET "led_out[10]" LOC = V1;
+NET "led_out[11]" IOSTANDARD = LVCMOS33;
+NET "led_out[11]" LOC = R1;
+NET "led_out[12]" IOSTANDARD = LVCMOS33;
+NET "led_out[12]" LOC = P5;
+NET "led_out[13]" IOSTANDARD = LVCMOS33;
+NET "led_out[13]" LOC = U1;
+NET "led_out[14]" IOSTANDARD = LVCMOS33;
+NET "led_out[14]" LOC = R2;
+NET "led_out[15]" IOSTANDARD = LVCMOS33;
+NET "led_out[15]" LOC = P2;
+
+NET "clk_50M_out" IOSTANDARD = LVCMOS33;
+NET "clk_50M_out" LOC = K5;
+
+NET "clk_cpu_out" IOSTANDARD = LVCMOS33;
+NET "clk_cpu_out" LOC = H6;
+
+
+NET "psram_clk" IOSTANDARD = LVCMOS33;
+NET "psram_clk" LOC = T15;
+
+NET "psram_adv" IOSTANDARD = LVCMOS33;
+NET "psram_adv" LOC = T13;
+
+NET "psram_cre" IOSTANDARD = LVCMOS33;
+NET "psram_cre" LOC = J14;
+
+NET "psram_ce" IOSTANDARD = LVCMOS33;
+NET "psram_ce" LOC = L18;
+
+NET "psram_oe" IOSTANDARD = LVCMOS33;
+NET "psram_oe" LOC = H14;
+
+NET "psram_we" IOSTANDARD = LVCMOS33;
+NET "psram_we" LOC = R11;
+
+NET "psram_lb" IOSTANDARD = LVCMOS33;
+NET "psram_lb" LOC = J15;
+
+NET "psram_ub" IOSTANDARD = LVCMOS33;
+NET "psram_ub" LOC = J13;
+
+NET "psram_data[0]" IOSTANDARD = LVCMOS33;
+NET "psram_data[0]" LOC = R12;
+NET "psram_data[1]" IOSTANDARD = LVCMOS33;
+NET "psram_data[1]" LOC = T11;
+NET "psram_data[2]" IOSTANDARD = LVCMOS33;
+NET "psram_data[2]" LOC = U12;
+NET "psram_data[3]" IOSTANDARD = LVCMOS33;
+NET "psram_data[3]" LOC = R13;
+NET "psram_data[4]" IOSTANDARD = LVCMOS33;
+NET "psram_data[4]" LOC = U18;
+NET "psram_data[5]" IOSTANDARD = LVCMOS33;
+NET "psram_data[5]" LOC = R17;
+NET "psram_data[6]" IOSTANDARD = LVCMOS33;
+NET "psram_data[6]" LOC = T18;
+NET "psram_data[7]" IOSTANDARD = LVCMOS33;
+NET "psram_data[7]" LOC = R18;
+NET "psram_data[8]" IOSTANDARD = LVCMOS33;
+NET "psram_data[8]" LOC = F18;
+NET "psram_data[9]" IOSTANDARD = LVCMOS33;
+NET "psram_data[9]" LOC = G18;
+NET "psram_data[10]" IOSTANDARD = LVCMOS33;
+NET "psram_data[10]" LOC = G17;
+NET "psram_data[11]" IOSTANDARD = LVCMOS33;
+NET "psram_data[11]" LOC = M18;
+NET "psram_data[12]" IOSTANDARD = LVCMOS33;
+NET "psram_data[12]" LOC = M17;
+NET "psram_data[13]" IOSTANDARD = LVCMOS33;
+NET "psram_data[13]" LOC = P18;
+NET "psram_data[14]" IOSTANDARD = LVCMOS33;
+NET "psram_data[14]" LOC = N17;
+NET "psram_data[15]" IOSTANDARD = LVCMOS33;
+NET "psram_data[15]" LOC = P17;
+
+NET "psram_addr[0]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[0]" LOC = J18;
+NET "psram_addr[1]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[1]" LOC = H17;
+NET "psram_addr[2]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[2]" LOC = H15;
+NET "psram_addr[3]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[3]" LOC = J17;
+NET "psram_addr[4]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[4]" LOC = H16;
+NET "psram_addr[5]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[5]" LOC = K15;
+NET "psram_addr[6]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[6]" LOC = K13;
+NET "psram_addr[7]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[7]" LOC = N15;
+NET "psram_addr[8]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[8]" LOC = V16;
+NET "psram_addr[9]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[9]" LOC = U14;
+NET "psram_addr[10]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[10]" LOC = V14;
+NET "psram_addr[11]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[11]" LOC = V12;
+NET "psram_addr[12]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[12]" LOC = P14;
+NET "psram_addr[13]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[13]" LOC = U16;
+NET "psram_addr[14]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[14]" LOC = R15;
+NET "psram_addr[15]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[15]" LOC = N14;
+NET "psram_addr[16]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[16]" LOC = N16;
+NET "psram_addr[17]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[17]" LOC = M13;
+NET "psram_addr[18]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[18]" LOC = V17;
+NET "psram_addr[19]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[19]" LOC = U17;
+NET "psram_addr[20]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[20]" LOC = T10;
+NET "psram_addr[21]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[21]" LOC = M16;
+NET "psram_addr[22]" IOSTANDARD = LVCMOS33;
+NET "psram_addr[22]" LOC = U13;
+
+# VGA Signals
+NET "vga_color_out[0]" LOC = "A3" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[1]" LOC = "B4" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[2]" LOC = "C5" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[3]" LOC = "A4" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[4]" LOC = "B7" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[5]" LOC = "C7" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[6]" LOC = "D7" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[7]" LOC = "D8" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[8]" LOC = "C6" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[9]" LOC = "A5" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[10]" LOC = "B6" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_color_out[11]" LOC = "A6" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_hsync" LOC = "B11" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+NET "vga_vsync" LOC = "B12" |IOSTANDARD = "LVCMOS33" |SLEW = "FAST";
+
+# PS2 Signals
+net ps2_clk LOC = "F4"  |IOSTANDARD = "LVCMOS33" |PULLUP;
+net ps2_data LOC = "B2" |IOSTANDARD = "LVCMOS33" |PULLUP;
+

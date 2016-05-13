@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/workspace/arm_cpu_for_nexys4_v1_ise14_7/system_top/system_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="system_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="30" />
+   <wvobject fp_name="/system_tb/clk_50M_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_50M_out</obj_property>
+      <obj_property name="ObjectShortName">clk_50M_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/clk_cpu_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_cpu_out</obj_property>
+      <obj_property name="ObjectShortName">clk_cpu_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/psram_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">psram_addr[22:0]</obj_property>
+      <obj_property name="ObjectShortName">psram_addr[22:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/psram_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">psram_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">psram_data[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/psram_ce" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">psram_ce</obj_property>
+      <obj_property name="ObjectShortName">psram_ce</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/psram_oe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">psram_oe</obj_property>
+      <obj_property name="ObjectShortName">psram_oe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/psram_we" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">psram_we</obj_property>
+      <obj_property name="ObjectShortName">psram_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/rom_selector" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rom_selector</obj_property>
+      <obj_property name="ObjectShortName">rom_selector</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/boot_addr_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">boot_addr_sel</obj_property>
+      <obj_property name="ObjectShortName">boot_addr_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uif/pc_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pc_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uif/instr_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">instr_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uif/mem_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mem_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_data[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uif/instr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uif/next_pc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">next_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">next_pc[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/clk_count" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_count[31:0]</obj_property>
+      <obj_property name="ObjectShortName">clk_count[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uif/jmp_flag" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">jmp_flag</obj_property>
+      <obj_property name="ObjectShortName">jmp_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uif/jmp_dest" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">jmp_dest[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jmp_dest[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/exc_jmp_flag" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">exc_jmp_flag</obj_property>
+      <obj_property name="ObjectShortName">exc_jmp_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/branch_flag" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">branch_flag</obj_property>
+      <obj_property name="ObjectShortName">branch_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/umem/ucp0/exc_code" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">exc_code[4:0]</obj_property>
+      <obj_property name="ObjectShortName">exc_code[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/umem/cp0_exc_code" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">cp0_exc_code[4:0]</obj_property>
+      <obj_property name="ObjectShortName">cp0_exc_code[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/umem/exc_code_ex2mem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">exc_code_ex2mem[4:0]</obj_property>
+      <obj_property name="ObjectShortName">exc_code_ex2mem[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/umem/mmu_exc_code" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mmu_exc_code[4:0]</obj_property>
+      <obj_property name="ObjectShortName">mmu_exc_code[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uex/exc_code_id2ex" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">exc_code_id2ex[4:0]</obj_property>
+      <obj_property name="ObjectShortName">exc_code_id2ex[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uex/exc_code_ex2mem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">exc_code_ex2mem[4:0]</obj_property>
+      <obj_property name="ObjectShortName">exc_code_ex2mem[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uex/alu_illegal_opt" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">alu_illegal_opt</obj_property>
+      <obj_property name="ObjectShortName">alu_illegal_opt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uex/ualu/illegal_opt" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">illegal_opt</obj_property>
+      <obj_property name="ObjectShortName">illegal_opt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_tb/UDT/ucpu/uex/ualu/opt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">opt[6:0]</obj_property>
+      <obj_property name="ObjectShortName">opt[6:0]</obj_property>
+   </wvobject>
+</wave_config>
