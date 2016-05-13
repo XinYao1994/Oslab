@@ -230,6 +230,12 @@ indent:
 	$(Q)find $(TOPDIR)/src -name *.c -or -name *.h | grep -vf $(TOPDIR)/misc/indent-whitelist | xargs $(TOPDIR)/misc/Lindent
 	$(Q)rm -rf `find $(TOPDIR)/src -name *~`
 
+cscope:
+	find ./ -name "*.c" > cscope.files
+	find ./ -name "*.h" >> cscope.files
+	find ./ -name "*.S" >> cscope.files
+	cscope -bqk
+
 FORCE:
 
 PHONY += FORCE
