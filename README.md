@@ -1,6 +1,7 @@
 #TinyComputer
 =============
 > This is a project about a tiny computer(I have not decided its name) based on MIPS and Nexys4 board.<br>
+> This work is a graduation project instructed by Prof.Zhiyuan Shaw
 > The kernel is ported from ucore<br>
 > The MIPS cpu comes from HUST's work with Prof.Diqing Hu<br>
 > The transform tool is used to copy the kernel to the Nexys4 board.<br>
