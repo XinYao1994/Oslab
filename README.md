@@ -1,42 +1,44 @@
 #TinyComputer
-> This is a project about a tiny computer(I have not decided its name) based on MIPS and Nexys4 board.
-> The kernel is ported from ucore
-> The MIPS cpu comes from HUST's work with Prof.Diqing Hu
-> The transform tool is used to copy the kernel to the Nexys4 board.
+=============
+> This is a project about a tiny computer(I have not decided its name) based on MIPS and Nexys4 board.<br>
+> The kernel is ported from ucore<br>
+> The MIPS cpu comes from HUST's work with Prof.Diqing Hu<br>
+> The transform tool is used to copy the kernel to the Nexys4 board.<br>
 
-# Oslab
+## Oslab
+-------------
 
-# you will be given a x86 kernel which can be launched in qemu-i386
+PS. you will be given a x86 kernel which can be launched in qemu-i386<br>
 
-1. QEMU configuration
+###1. QEMU configuration
 
-> cd qemu
-> ./configure --help : find info you want
-> ./configure --target-list=i386-softmmu,mipsel-softmmu
-> sudo apt-get install zlib1g-dev
-> libglib2.0-dev
-> libtool
-> libpixman-1-deva
-> apt-get install libsdl1.2-dev or you will have graphics
-> make
+> cd qemu<br>
+> ./configure --help : find info you want<br>
+> ./configure --target-list=i386-softmmu,mipsel-softmmu<br>
+> sudo apt-get install zlib1g-dev<br>
+> libglib2.0-dev<br>
+> libtool<br>
+> libpixman-1-deva<br>
+> apt-get install libsdl1.2-dev or you will have graphics<br>
+> make<br>
 
-Add PATH
+PS. Add PATH<br>
 
-2. x86 kernel 
+###2. x86 kernel 
 
-> cd ucore/ucore
-> make ARCH=i386 defconfig
-> install libncurses5-dev
-> make ARCH=i386 
-> make ARCH=i386 sfsimg
-> make ARCH=i386 swapimg
-> ./uCore-run
+> cd ucore/ucore<br>
+> make ARCH=i386 defconfig<br>
+> install libncurses5-dev<br>
+> make ARCH=i386 <br>
+> make ARCH=i386 sfsimg<br>
+> make ARCH=i386 swapimg<br>
+> ./uCore-run<br>
 
-3. mips kernel
+###3. mips kernel
 
-> make clean
-> make ARCH=mips menuconfig : set you cross-compiler PATH
-> make ARCH=mips sfsimg : it will have been modified in future
-> make ARCH=mips kernel
+> make clean<br>
+> make ARCH=mips menuconfig : set you cross-compiler PATH<br>
+> make ARCH=mips sfsimg : it will have been modified in future<br>
+> make ARCH=mips kernel<br>
 
 
