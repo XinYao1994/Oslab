@@ -1,3 +1,9 @@
+#TinyComputer
+This is a project about a tiny computer(I have not decided its name) based on MIPS and Nexys4 board.
+The kernel is ported from ucore
+The MIPS cpu comes from HUST's work with Prof.Diqing Hu
+The transform tool is used to copy the kernel to the Nexys4 board.
+
 # Oslab
 
 # you will be given a x86 kernel which can be launched in qemu-i386
