@@ -1,8 +1,8 @@
 #TinyComputer
-This is a project about a tiny computer(I have not decided its name) based on MIPS and Nexys4 board.
-The kernel is ported from ucore
-The MIPS cpu comes from HUST's work with Prof.Diqing Hu
-The transform tool is used to copy the kernel to the Nexys4 board.
+> This is a project about a tiny computer(I have not decided its name) based on MIPS and Nexys4 board.
+> The kernel is ported from ucore
+> The MIPS cpu comes from HUST's work with Prof.Diqing Hu
+> The transform tool is used to copy the kernel to the Nexys4 board.
 
 # Oslab
 
@@ -23,6 +23,7 @@ The transform tool is used to copy the kernel to the Nexys4 board.
 Add PATH
 
 2. x86 kernel 
+
 > cd ucore/ucore
 > make ARCH=i386 defconfig
 > install libncurses5-dev
@@ -32,6 +33,7 @@ Add PATH
 > ./uCore-run
 
 3. mips kernel
+
 > make clean
 > make ARCH=mips menuconfig : set you cross-compiler PATH
 > make ARCH=mips sfsimg : it will have been modified in future
